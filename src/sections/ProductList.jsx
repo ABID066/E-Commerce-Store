@@ -15,14 +15,18 @@ const ProductList = () => {
                 <SortedProducts/>
             </div>
 
+            {(state.products.length > 0)
+                ? (<div className="product-grid">
+                        {
+                            state.products.map((p) => (
+                                <ProductCard key={p.id} product={p}/>
+                            ))
+                        }
+                    </div>)
+                : (<div className="text-center text-2xl text-gray-500">No products found</div>)
+            }
 
-            <div className="product-grid">
-                {
-                    state.products.map((p)=> (
-                        <ProductCard key={p.id} product={p}/>
-                    ))
-                }
-            </div>
+
         </div>
     );
 };
