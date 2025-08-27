@@ -1,0 +1,16 @@
+
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap");
+
+
+
+@import "tailwindcss";
+
+@theme {
+    --font-share: Satoshi, "sans-serif";
+}
+
+@layer components {
+    .product-grid {
+        @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4;
+    }
+}
