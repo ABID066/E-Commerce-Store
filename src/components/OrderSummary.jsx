@@ -1,5 +1,5 @@
-import {useContext} from 'react';
-import {AppContext} from "../context/Context.jsx";
+import { useContext } from 'react';
+import { AppContext } from "../context/Context.jsx";
 
 const OrderSummary = () => {
 
@@ -8,6 +8,8 @@ const OrderSummary = () => {
     const subtotal = state.cart.reduce((total,item) => {
             return total + item.quantity * item.price;
         }, 0)
+
+    const discount = subtotal*.2;
 
 
     return (
@@ -19,7 +21,7 @@ const OrderSummary = () => {
                 </div>
                 <div className="flex justify-between text-red-500">
                     <span>Discount (-20%)</span>
-                    <span>-${subtotal*.2}</span>
+                    <span>-${discount.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
                     <span className="text-gray-600">Delivery Fee</span>
@@ -28,7 +30,9 @@ const OrderSummary = () => {
                 <div
                     className="flex justify-between font-bold text-lg pt-2 border-t border-gray-200">
                     <span>Total</span>
-                    <span>${(state.cart.length > 0) ? `${subtotal-subtotal*.2+ 15}` : "0"}</span>
+                    <span>
+                        ${(state.cart.length > 0) ? `${subtotal-discount.toFixed(2)+ 15}` : "0"}
+                    </span>
                 </div>
             </div>
 
